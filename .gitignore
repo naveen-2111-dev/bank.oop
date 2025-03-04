@@ -1,3 +1,10 @@
-#.idea
+# Ignore IDE-specific files
+.idea/
 
-.idea
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore database files
+banking/bank.db

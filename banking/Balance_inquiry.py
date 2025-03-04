@@ -1,5 +1,4 @@
 from database import BankDb
-from tabulate import tabulate
 
 class Balance:
     def __init__(self, Id):
@@ -13,10 +12,12 @@ class Balance:
 
         account_id, name, balance = result
 
-        data = [
-            ["Account ID", account_id],
-            ["Name", name],
-            ["Balance", f"${balance:.2f}"]
-        ]
+        message = (
+            f"The account holder's name is {name}, "
+            f"and the account number is {account_id}. "
+            f"The current balance is ${balance:.2f}."
+        )
 
-        print(tabulate(data, tablefmt="grid"))
+        print(message)
+
+# balance = Balance(1605271366)
