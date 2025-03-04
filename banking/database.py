@@ -15,6 +15,18 @@ class BankDb:
         )
         """)
 
+        self.cursor.execute("""
+        CREATE TABLE IF NOT EXISTS transactions (
+            tx_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sender_id INTEGER NOT NULL,
+            Tx_type CHECK (tx_type IN ('deposit', 'withdrawal', 'transfer')) NOT NULL,
+            receiver_id INTEGER NOT NULL,
+            amount REAL NOT NULL,
+            timestamp INTEGER NOT NULL,
+            tx_hash TEXT UNIQUE NOT NULL
+        )
+        """)
+
         self.connection.commit()
 
     def execute_query(self, query, params=()):
