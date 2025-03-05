@@ -11,7 +11,8 @@ class BankDb:
         CREATE TABLE IF NOT EXISTS accounts(
             account_id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
-            balance REAL DEFAULT 0.0
+            balance REAL DEFAULT 0.0,
+            pin INTEGER NOT NULL
         )
         """)
 
@@ -20,7 +21,7 @@ class BankDb:
             tx_id INTEGER PRIMARY KEY AUTOINCREMENT,
             sender_id INTEGER NOT NULL,
             Tx_type CHECK (tx_type IN ('deposit', 'withdrawal', 'transfer')) NOT NULL,
-            receiver_id INTEGER NOT NULL,
+            receiver_id INTEGER,
             amount REAL NOT NULL,
             timestamp INTEGER NOT NULL,
             tx_hash TEXT UNIQUE NOT NULL
@@ -42,7 +43,7 @@ class BankDb:
 
     def get_account_by_id(self, account_id):
         self.cursor.execute("""
-        SELECT account_id, name, balance 
+        SELECT account_id, name, balance, pin
         FROM accounts 
         WHERE account_id = ?;
         """, (account_id,))

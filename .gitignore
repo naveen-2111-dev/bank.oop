@@ -7,4 +7,4 @@ __pycache__/
 *.pyo
 
 # Ignore database files
-banking/bank.db
+bank.db

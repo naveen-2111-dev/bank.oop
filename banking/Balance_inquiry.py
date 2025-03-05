@@ -1,4 +1,4 @@
-from database import BankDb
+from banking.database import BankDb
 
 class Balance:
     def __init__(self, Id):
@@ -10,7 +10,7 @@ class Balance:
             print(f"No data found for Account ID: {Id}")
             return
 
-        account_id, name, balance = result
+        account_id, name, balance, pin = result
 
         message = (
             f"The account holder's name is {name}, "

@@ -1,9 +1,6 @@
-import hashlib
+import uuid
 
 class Utils:
     @staticmethod
-    def transactionHash(self):
-        data = "this is a bank simulation"
-        data_hash = hashlib.sha256(data.encode()).hexdigest()
-
-        return data_hash
+    def transactionhash():
+        return str(uuid.uuid4())
